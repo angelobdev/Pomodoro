@@ -1,0 +1,37 @@
+<resources>
+    <!--GLOBALI-->
+    <string name="app_name">Pomodoro</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!--NAVIGATORE-->
+    <string name="nav_header_title">Pomodoro</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_salva_preset">Salva Preset</string>
+
+    <!--MENU-->
+    <string name="menu_home">Home</string>
+    <string name="menu_settings">Impostazioni</string>
+    <string name="menu_info">Info</string>
+
+    <!--HOME-->
+    <string name="studio_tv_text">Studio</string>
+    <string name="relax_tv_text">Relax</string>
+
+    <string name="equilibro_text_0">Poco Efficiente</string>
+    <string name="equilibro_text_1">Poco Equilibrato</string>
+    <string name="equilibro_text_2">Equilibrato</string>
+    <string name="equilibro_text_3">Abbastanza Equilibrato</string>
+    <string name="equilibro_text_4">Intenso</string>
+
+    <string name="salva_preset_button_text">Salva</string>
+
+    <string name="pomodoro_salvati_text">Pomodoro salvati:</string>
+
+    <string name="start_button_text">Avvia</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
+
