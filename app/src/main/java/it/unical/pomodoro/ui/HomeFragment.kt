@@ -55,12 +55,12 @@ class HomeFragment : Fragment() {
         numberPickerStudio = view.findViewById(R.id.studio_timer)
         numberPickerStudio.maxValue = maxMinuti
         numberPickerStudio.minValue = minMinuti
-        numberPickerStudio.value = 45;
+        numberPickerStudio.value = 45
 
         numberPickerRelax = view.findViewById(R.id.relax_timer)
         numberPickerRelax.maxValue = maxMinuti
         numberPickerRelax.minValue = minMinuti
-        numberPickerRelax.value = 15;
+        numberPickerRelax.value = 15
 
         // Listeners
         numberPickerStudio.setOnScrollListener { _, scrollState ->
@@ -88,7 +88,7 @@ class HomeFragment : Fragment() {
                 // Codice da eseguire quando viene selezionata un'opzione
                 val selezionato = parent?.getItemAtPosition(position).toString()
 
-                val timer = presetsSP.getString(selezionato, "NULL");
+                val timer = presetsSP.getString(selezionato, "NULL")
                 val studioRelax = timer?.split(".")!!
 
                 numberPickerStudio.value = studioRelax[0].toInt()
@@ -130,7 +130,7 @@ class HomeFragment : Fragment() {
             val relax = numberPickerRelax.value
 
             val timerSP: SharedPreferences =
-                requireActivity().getSharedPreferences("timer", Context.MODE_PRIVATE);
+                requireActivity().getSharedPreferences("timer", Context.MODE_PRIVATE)
 
             timerSP.edit()
                 .putString("timer", "$studio.$relax")
@@ -157,11 +157,11 @@ class HomeFragment : Fragment() {
             val textView = view.findViewById<TextView>(R.id.indice_equilibrio)
 
             textView.text = when (ratio) {
-                in 0.0f..0.99f -> resources.getString(R.string.equilibro_text_0);       // Poco efficiente
-                in 1.00f..2.49f -> resources.getString(R.string.equilibro_text_1);     // Poco Equilibrato
-                in 2.5f..3.5f -> resources.getString(R.string.equilibro_text_2);            // Equilibrato
-                in 3.51f..6f -> resources.getString(R.string.equilibro_text_3);  // Abbastanza Equilibrato
-                else -> resources.getString(R.string.equilibro_text_4);    // Intenso
+                in 0.0f..0.99f -> resources.getString(R.string.equilibro_text_0)       // Poco efficiente
+                in 1.00f..2.49f -> resources.getString(R.string.equilibro_text_1)    // Poco Equilibrato
+                in 2.5f..3.5f -> resources.getString(R.string.equilibro_text_2)         // Equilibrato
+                in 3.51f..6f -> resources.getString(R.string.equilibro_text_3)  // Abbastanza Equilibrato
+                else -> resources.getString(R.string.equilibro_text_4)    // Intenso
             }
 
         }

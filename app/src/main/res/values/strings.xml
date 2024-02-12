@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!--GLOBALI-->
     <string name="app_name">Pomodoro</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
