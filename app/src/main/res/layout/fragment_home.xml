@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.HomeFragment">
 
 
     <NumberPicker
         android:id="@+id/relax_timer"
+        style="@android:style/Widget.Material.NumberPicker"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:scrollbarStyle="outsideInset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/studio_timer"
@@ -43,18 +45,17 @@
     <Button
         android:id="@+id/start_button"
         android:layout_width="230dp"
-        android:layout_height="48dp"
+        android:layout_height="64dp"
         android:layout_marginTop="108dp"
+        android:backgroundTint="#558B2F"
+
         android:text="@string/start_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@+id/dropdown_salvati"
-        app:layout_constraintVertical_bias="0.0"
-        app:strokeColor="#000000"
-        app:strokeWidth="1dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/studio_timer_text"
@@ -63,6 +64,8 @@
         android:layout_marginTop="64dp"
         android:text="@string/studio_tv_text"
         android:textAlignment="center"
+        android:textColor="#512DA8"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/relax_timer_text"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,6 +78,8 @@
         android:layout_marginTop="64dp"
         android:text="@string/relax_tv_text"
         android:textAlignment="center"
+        android:textColor="#512DA8"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/studio_timer_text"
@@ -82,11 +87,14 @@
 
     <TextView
         android:id="@+id/indice_equilibrio"
-        android:layout_width="230dp"
-        android:layout_height="21dp"
+        android:layout_width="203dp"
+        android:layout_height="31dp"
         android:layout_marginTop="24dp"
         android:text="@string/equilibro_text_1"
         android:textAlignment="center"
+        android:textColor="#4527A0"
+        android:textSize="18sp"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/studio_timer" />
@@ -98,6 +106,8 @@
         android:layout_marginTop="88dp"
         android:text="@string/pomodoro_salvati_text"
         android:textAlignment="center"
+        android:textColor="#FF6F00"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/indice_equilibrio" />
@@ -106,6 +116,7 @@
         android:id="@+id/salva_preset_button"
         android:layout_width="120dp"
         android:layout_height="28dp"
+        android:backgroundTint="#F57F17"
         android:includeFontPadding="false"
         android:padding="0dp"
         android:text="@string/salva_preset_button_text"

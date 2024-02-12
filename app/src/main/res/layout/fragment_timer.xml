@@ -4,20 +4,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.timer.TimerFragment">
+    tools:context=".ui.TimerFragment">
 
-    <Chronometer
-        android:id="@+id/chronometer"
-        android:layout_width="182dp"
-        android:layout_height="129dp"
-        android:layout_gravity="center"
-        android:textColor="#000000"
-        android:textSize="24sp"
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:indeterminateOnly="false"
+        android:max="1000"
+        android:progress="75"
+
+        android:progressDrawable="@drawable/circular_progress_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
+    <TextView
+        android:id="@+id/phase_text"
+        android:layout_width="128dp"
+        android:layout_height="31dp"
+        android:text="@string/studio_tv_text"
+        android:textAlignment="center"
+        android:textColor="#4527A0"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/countdown_timer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/progress_bar"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/countdown_timer"
+        android:layout_width="195dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/timer_init_value"
+        android:textAlignment="center"
+        android:textColor="#9575CD"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/progress_bar"
+        app:layout_constraintVertical_bias="0.438" />
+
+    <TextView
+        android:id="@+id/timer_info_box"
+        android:layout_width="165dp"
+        android:layout_height="65dp"
+        android:text="@string/timer_info_box_studio"
+        android:textAlignment="center"
+        android:textColor="#B39DDB"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar"
+        app:layout_constraintTop_toBottomOf="@+id/countdown_timer"
+        app:layout_constraintVertical_bias="0.046" />
+
+    <Button
+        android:id="@+id/timer_stop_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#AE1010"
+        android:text="@string/timer_stop_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

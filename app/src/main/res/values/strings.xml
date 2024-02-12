@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!--GLOBALI-->
     <string name="app_name">Pomodoro</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -13,6 +13,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_settings">Impostazioni</string>
     <string name="menu_info">Info</string>
+    <string name="menu_timer">Timer</string>
 
     <!--HOME-->
     <string name="studio_tv_text">Studio</string>
@@ -29,9 +30,12 @@
     <string name="pomodoro_salvati_text">Pomodoro salvati:</string>
 
     <string name="start_button_text">Avvia</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--TIMER-->
+    <string name="timer_init_value">00:00</string>
+    <string name="timer_info_box_studio">In questa fase non ti sarà permesso di usare il dispositivo</string>
+    <string name="timer_info_box_relax">In questa fase sarai libero di usare il dispositivo</string>
+    <string name="timer_stop_button_text">Stop</string>
 
 </resources>
 

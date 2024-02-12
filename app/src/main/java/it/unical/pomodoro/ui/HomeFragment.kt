@@ -1,4 +1,4 @@
-package it.unical.pomodoro.ui.home
+package it.unical.pomodoro.ui
 
 import android.app.AlertDialog
 import android.content.Context
@@ -17,23 +17,19 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import it.unical.pomodoro.R
 import it.unical.pomodoro.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
 
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+
     private val maxMinuti = 60
     private val minMinuti = 1
 
-    private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    private lateinit var homeViewModel: HomeViewModel
     private lateinit var presetsSP: SharedPreferences
     private lateinit var numberPickerStudio: NumberPicker
     private lateinit var numberPickerRelax: NumberPicker
@@ -45,16 +41,11 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        this.homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        this.presetsSP =
-            requireContext().getSharedPreferences("Presets", Context.MODE_PRIVATE)
+        this.presetsSP = requireContext().getSharedPreferences("Presets", Context.MODE_PRIVATE)
 
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -73,11 +64,11 @@ class HomeFragment : Fragment() {
 
         // Listeners
         numberPickerStudio.setOnScrollListener { _, scrollState ->
-            checkScroll(view, scrollState, numberPickerStudio, numberPickerRelax)
+            checkScroll(view, scrollState)
         } // studio
 
         numberPickerRelax.setOnScrollListener { _, scrollState ->
-            checkScroll(view, scrollState, numberPickerStudio, numberPickerRelax)
+            checkScroll(view, scrollState)
         } // relax
 
         val textView = view.findViewById<TextView>(R.id.indice_equilibrio)
@@ -90,7 +81,7 @@ class HomeFragment : Fragment() {
         presetsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
-                view: View?,
+                itemView: View?,
                 position: Int,
                 id: Long
             ) {
@@ -102,6 +93,8 @@ class HomeFragment : Fragment() {
 
                 numberPickerStudio.value = studioRelax[0].toInt()
                 numberPickerRelax.value = studioRelax[1].toInt()
+
+                checkScroll(view, SCROLL_STATE_IDLE)
 
             }
 
@@ -122,27 +115,39 @@ class HomeFragment : Fragment() {
         presetsSpinner.adapter = adapter
 
 
-        //Salva
+        // SALVA PRESET
         val salvaPresetButton = view.findViewById<Button>(R.id.salva_preset_button)
         salvaPresetButton.setOnClickListener {
             showInputDialog()
         }
 
-        //Avvia
-        val startButton = view.findViewById<Button>(R.id.start_button)
-
-        //Listener avvia
+        // AVVIA
+        startButton = view.findViewById(R.id.start_button)
         startButton.setOnClickListener {
-            println("Ciao")
+
+            // salvo in memoria il timer attuale
+            val studio = numberPickerStudio.value
+            val relax = numberPickerRelax.value
+
+            val timerSP: SharedPreferences =
+                requireActivity().getSharedPreferences("timer", Context.MODE_PRIVATE);
+
+            timerSP.edit()
+                .putString("timer", "$studio.$relax")
+                .apply()
+
+            // Navigo verso il fragment del timer
+            val navController =
+                requireActivity().findNavController(R.id.content_main)
+            navController.navigate(R.id.nav_timer)
+
         }
 
     }
 
     private fun checkScroll(
         view: View,
-        scrollState: Int,
-        numberPickerStudio: NumberPicker,
-        numberPickerRelax: NumberPicker
+        scrollState: Int
     ) {
         if (scrollState == SCROLL_STATE_IDLE) {
             val studio = numberPickerStudio.value
@@ -152,14 +157,13 @@ class HomeFragment : Fragment() {
             val textView = view.findViewById<TextView>(R.id.indice_equilibrio)
 
             textView.text = when (ratio) {
-                in 0.0f..0.99f -> resources.getString(R.string.equilibro_text_0);    // Poco efficiente
-                in 1.00f..2.49f -> resources.getString(R.string.equilibro_text_1);      // Poco Equilibrato //TODO: 2.49
-                in 2.5f..3.5f -> resources.getString(R.string.equilibro_text_2);    // Equilibrato
-                in 3.51f..6f -> resources.getString(R.string.equilibro_text_3);   // Abbastanza Equilibrato
+                in 0.0f..0.99f -> resources.getString(R.string.equilibro_text_0);       // Poco efficiente
+                in 1.00f..2.49f -> resources.getString(R.string.equilibro_text_1);     // Poco Equilibrato
+                in 2.5f..3.5f -> resources.getString(R.string.equilibro_text_2);            // Equilibrato
+                in 3.51f..6f -> resources.getString(R.string.equilibro_text_3);  // Abbastanza Equilibrato
                 else -> resources.getString(R.string.equilibro_text_4);    // Intenso
             }
 
-            println("Ratio: $ratio, Valore: ${textView.text}")
         }
 
     }
@@ -187,25 +191,21 @@ class HomeFragment : Fragment() {
             editor.putString(nome, "$studio.$relax")
             editor.apply()
 
-            val adapter = presetsSpinner.adapter as ArrayAdapter<String>
+            val adapter: ArrayAdapter<String> = presetsSpinner.adapter as ArrayAdapter<String>
             adapter.add(nome)
             adapter.notifyDataSetChanged()
 
             // Notifico l'utente
             Toast.makeText(
-                this@HomeFragment.context,
+                context,
                 "Valore salvato con successo",
                 Toast.LENGTH_SHORT
-            )
-                .show()
+            ).show()
         }
 
         // Mostra il dialog
         builder.show()
     }
-
-    //start button press
-
 
     override fun onDestroyView() {
         super.onDestroyView()
