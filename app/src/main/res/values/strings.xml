@@ -41,5 +41,9 @@
     <string name="settings_switch_non_disturbare">Non disturbare</string>
     <string name="settings_switch_blocca_connessione">Blocca Connessione</string>
 
+    <!--INFO-->
+    <string name="info_text">Carico...</string>
+
+
 </resources>
 
