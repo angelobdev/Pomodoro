@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import it.unical.pomodoro.R
 import it.unical.pomodoro.databinding.FragmentInfoBinding
 
 class InfoFragment : Fragment() {
@@ -20,6 +22,16 @@ class InfoFragment : Fragment() {
         _binding = FragmentInfoBinding.inflate(inflater, container, false)
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val inputStream = resources.openRawResource(R.raw.info)
+        val content = inputStream.bufferedReader().use { it.readText() }
+
+        val textView = view.findViewById<TextView>(R.id.info_text_view)
+        textView.text = content
     }
 
     override fun onDestroyView() {
