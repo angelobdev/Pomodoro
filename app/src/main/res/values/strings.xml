@@ -1,13 +1,10 @@
 <resources>
     <!--GLOBALI-->
     <string name="app_name">Pomodoro</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!--NAVIGATORE-->
     <string name="nav_header_title">Pomodoro</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_salva_preset">Salva Preset</string>
 
     <!--MENU-->
     <string name="menu_home">Home</string>
