@@ -1,16 +1,18 @@
 package it.unical.pomodoro.fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.SwitchCompat
+import android.widget.Switch
 import androidx.fragment.app.Fragment
 import it.unical.pomodoro.R
 import it.unical.pomodoro.databinding.FragmentSettingsBinding
 
+@SuppressLint("UseSwitchCompatOrMaterialCode")
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
@@ -25,10 +27,10 @@ class SettingsFragment : Fragment() {
         const val BLOCCA_CONNESSIONE_KEY = "blocca_connessione"
     }
 
-    private lateinit var alertMovimentoSwitch: SwitchCompat
-    private lateinit var silenziosoSwitch: SwitchCompat
-    private lateinit var nonDisturbareSwitch: SwitchCompat
-    private lateinit var bloccaConnessioneSwitch: SwitchCompat
+    private lateinit var alertMovimentoSwitch: Switch
+    private lateinit var silenziosoSwitch: Switch
+    private lateinit var nonDisturbareSwitch: Switch
+    private lateinit var bloccaConnessioneSwitch: Switch
 
     override fun onCreateView(
         inflater: LayoutInflater,
