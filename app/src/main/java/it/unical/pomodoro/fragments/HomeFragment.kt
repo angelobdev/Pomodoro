@@ -1,4 +1,4 @@
-package it.unical.pomodoro.ui
+package it.unical.pomodoro.fragments
 
 import android.app.AlertDialog
 import android.content.Context
@@ -191,6 +191,7 @@ class HomeFragment : Fragment() {
             editor.putString(nome, "$studio.$relax")
             editor.apply()
 
+            @Suppress("UNCHECKED_CAST")
             val adapter: ArrayAdapter<String> = presetsSpinner.adapter as ArrayAdapter<String>
             adapter.add(nome)
             adapter.notifyDataSetChanged()

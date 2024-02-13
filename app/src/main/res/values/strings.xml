@@ -37,5 +37,12 @@
     <string name="timer_info_box_relax">In questa fase sarai libero di usare il dispositivo</string>
     <string name="timer_stop_button_text">Stop</string>
 
+    <!--IMPOSTAZIONI-->
+    <string name="settings_header_text">Impostazioni modalità studio</string>
+    <string name="settings_switch_alert_movimento">Alert Movimento</string>
+    <string name="settings_switch_silenzioso">Silezioso</string>
+    <string name="settings_switch_non_disturbare">Non disturbare</string>
+    <string name="settings_switch_blocca_connessione">Blocca Connessione</string>
+
 </resources>
 

@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="it.unical.pomodoro.ui.HomeFragment"
+        android:name="it.unical.pomodoro.fragments.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="it.unical.pomodoro.ui.SettingsFragment"
+        android:name="it.unical.pomodoro.fragments.SettingsFragment"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/nav_info"
-        android:name="it.unical.pomodoro.ui.InfoFragment"
+        android:name="it.unical.pomodoro.fragments.InfoFragment"
         android:label="@string/menu_info"
         tools:layout="@layout/fragment_info" />
 
     <fragment
         android:id="@+id/nav_timer"
-        android:name="it.unical.pomodoro.ui.TimerFragment"
+        android:name="it.unical.pomodoro.fragments.TimerFragment"
         android:label="@string/menu_timer"
         tools:layout="@layout/fragment_timer" />
 </navigation>

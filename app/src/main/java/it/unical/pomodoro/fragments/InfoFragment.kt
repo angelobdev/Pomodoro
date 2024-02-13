@@ -1,21 +1,24 @@
-package it.unical.pomodoro.ui
+package it.unical.pomodoro.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import it.unical.pomodoro.databinding.FragmentSettingsBinding
+import it.unical.pomodoro.databinding.FragmentInfoBinding
 
-class SettingsFragment : Fragment() {
+class InfoFragment : Fragment() {
 
-    private var _binding: FragmentSettingsBinding? = null
+    private var _binding: FragmentInfoBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+        _binding = FragmentInfoBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 

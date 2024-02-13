@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.navView.setupWithNavController(navController)
 
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
