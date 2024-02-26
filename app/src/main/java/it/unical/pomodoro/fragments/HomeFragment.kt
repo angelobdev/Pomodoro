@@ -78,6 +78,7 @@ class HomeFragment : Fragment() {
         presetsSpinner = view.findViewById(R.id.dropdown_salvati)
         presetsSpinner.prompt = "Seleziona un preset:"
 
+        var selezionato = ""
         presetsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -86,7 +87,7 @@ class HomeFragment : Fragment() {
                 id: Long
             ) {
                 // Codice da eseguire quando viene selezionata un'opzione
-                val selezionato = parent?.getItemAtPosition(position).toString()
+                selezionato = parent?.getItemAtPosition(position).toString()
 
                 val timer = presetsSP.getString(selezionato, "NULL")
                 val studioRelax = timer?.split(".")!!
@@ -114,11 +115,17 @@ class HomeFragment : Fragment() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         presetsSpinner.adapter = adapter
 
-
         // SALVA PRESET
         val salvaPresetButton = view.findViewById<Button>(R.id.salva_preset_button)
         salvaPresetButton.setOnClickListener {
             showInputDialog()
+        }
+
+        // ELIMINA PRESET
+        val eliminaPresetButton = view.findViewById<Button>(R.id.elimina_preset_button)
+        eliminaPresetButton.setOnClickListener {
+            adapter.remove(selezionato)
+            presetsSP.edit().remove(selezionato).apply()
         }
 
         // AVVIA
